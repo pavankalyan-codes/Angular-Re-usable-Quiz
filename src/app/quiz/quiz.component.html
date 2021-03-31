@@ -1,0 +1,82 @@
+<div class="root-div">
+  <div class="quiz">
+    <div class="divLast d-flex justify-content-between">
+      <div *ngFor="let question of questionData; let i = index">
+        <div *ngIf="i == 0">
+          <div class="left-end col-12" (click)="selectQuestion(i)">
+            <div class="col-3 le"></div>
+            <div
+              class="dot col-6"
+              [class.attempted]="answers[question.questionId] != null"
+              [class]="
+                currentQuestion.questionId == question.questionId
+                  ? 'selected'
+                  : ''
+              "
+            >
+              {{ i + 1 }}
+            </div>
+            <div class="col-3"></div>
+          </div>
+        </div>
+        <div *ngIf="i == questionData.length - 1">
+          <div class="right-end col-12" (click)="selectQuestion(i)">
+            <div class="col-3"></div>
+            <div
+              class="dot col-6"
+              [class.attempted]="answers[question.questionId] != null"
+              [class]="
+                currentQuestion.questionId == question.questionId
+                  ? 'selected'
+                  : ''
+              "
+            >
+              {{ i + 1 }}
+            </div>
+            <div class="col-3 re"></div>
+          </div>
+        </div>
+        <div *ngIf="i != 0 && i != questionData.length - 1">
+          <div class="dot-outer" (click)="selectQuestion(i)">
+            <div
+              class="dot"
+              [class.attempted]="answers[question.questionId] != null"
+              [class]="
+                currentQuestion.questionId == question.questionId
+                  ? 'selected'
+                  : ''
+              "
+            >
+              {{ i + 1 }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="mt-4">
+        {{ currentQuestion.questionText }}
+      </div>
+      <div class="options mt-4">
+        <div
+          class="mx-2 my-2 option p-3 mb-5"
+          *ngFor="let option of currentQuestion.options"
+          (click)="saveAnswer(currentQuestion.questionId, option.optionId)"
+          [class]="
+            answers[currentQuestion.questionId] === option.optionId
+              ? 'selectedOption'
+              : ''
+          "
+        >
+          <span>{{ option.optionText }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="submit d-flex justify-content-center">
+    <button (click)="submitAnswers()" class="btnSubmit btn btn-lg shadow-none">
+      Submit
+    </button>
+  </div>
+</div>
