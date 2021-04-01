@@ -81,6 +81,7 @@ import { Question } from './question.model';
       </div>
       <div class="submit d-flex justify-content-center">
         <button
+          [disabled]="!answeredAll"
           (click)="submitAnswers()"
           class="btnSubmit btn btn-lg shadow-none"
         >
@@ -240,6 +241,7 @@ export class QuizComponent implements OnInit {
 
   currentQuestionIndex = 0;
   answers = {};
+  answeredAll: boolean = false;
 
   //currentQuestionId = '1';
 
@@ -268,6 +270,10 @@ export class QuizComponent implements OnInit {
   saveAnswer(qid, aid) {
     this.answers[qid] = aid;
     this.goToNextQuestion();
+
+    if (Object.keys(this.answers).length === this.questionData.length) {
+      this.answeredAll = true;
+    }
   }
 
   submitAnswers() {

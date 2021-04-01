@@ -2,23 +2,49 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project quiz` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project quiz`.
-> Note: Don't forget to add `--project quiz` or else it will be added to the default project in your `angular.json` file. 
+Run `npm i generate-quiz` for installation. Before using this component include `QuizModule` in our `app.module.ts` imports.
 
-## Build
 
-Run `ng build quiz` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
 
-## Publishing
+`<lib-quiz [questionData]="questionData" (answerData)="listenToAnswers($event)"></lib-quiz>`
 
-After building your library with `ng build quiz`, go to the dist folder `cd dist/quiz` and run `npm publish`.
 
-## Running unit tests
+Prepare the questions data in the below structure.
 
-Run `ng test quiz` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+const questionsData=[ 
+		{
+			questionText: "Who killed John Wicks Dog?",
+			questionId: "15544",
+			options: [ 
+				{ optionId: "1d23f", optionText: "John Doe" }, 
+				{ optionId: "1er3e", optionText: "Walter White" },
+				{ optionId: "3fgr4", optionText: "Jessy Pinkman" },
+			    { optionId: "13fge", optionText: "Vivek Oberoi" },
+			] 
+		},
+		{
+			questionText: "Say my name?",
+			questionId: "124354",
+			options: [ 
+				{ optionId: "3dfdf", optionText: "Heisenberg" }, 
+				{ optionId: "35fgf", optionText: "Gus Fring" },
+				{ optionId: "7gthg", optionText: "Hank Schrader" },
+			    { optionId: "0df33", optionText: "Ted" },
+			] 
+		}
+		
+	]
+```
 
-## Further help
+> Note: `questionId` should be unique to question. `optionId` should be unique to that particular options array.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Had any issues
+Report any issues found at [quiz]('https://github.com/pavankalyan-codes/Angular-Re-usable-Quiz')
+
+## Feature Suggestion
+Please reach out to me for any feature suggestions [pavankalyan.c](mail:pavankalyan141640@gmail.com)
