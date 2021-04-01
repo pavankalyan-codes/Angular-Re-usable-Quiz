@@ -122,6 +122,46 @@
           }
         }
       }
+    },
+    "quiz": {
+      "projectType": "library",
+      "root": "projects/quiz",
+      "sourceRoot": "projects/quiz/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/quiz/tsconfig.lib.json",
+            "project": "projects/quiz/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/quiz/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/quiz/src/test.ts",
+            "tsConfig": "projects/quiz/tsconfig.spec.json",
+            "karmaConfig": "projects/quiz/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/quiz/tsconfig.lib.json",
+              "projects/quiz/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "Quiz"

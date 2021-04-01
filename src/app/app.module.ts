@@ -1,18 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { QuizComponent, QuizModule } from 'quiz';
 
 import { AppComponent } from './app.component';
-import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    QuizComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
+  declarations: [AppComponent, QuizComponent],
+  imports: [BrowserModule, QuizModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
